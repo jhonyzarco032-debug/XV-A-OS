@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mis 15 Años - Nikeila</title>
+
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,500;0,700;1,400&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'rose-gold': '#B76E79',
+                        'blush-pink': '#FFD1DC',
+                        'soft-pink': '#FFF0F5',
+                        'deep-pink': '#D81B60',
+                        'gold-accent': '#D4AF37',
+                    },
+                    fontFamily: {
+                        cursive: ['Great Vibes', 'cursive'],
+                        serif: ['Playfair Display', 'serif'],
+                        sans: ['Montserrat', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+
+    <style>
+        body {
+            font-family: 'Montserrat', sans-serif;
+            background: linear-gradient(135deg, #fff0f5 0%, #fce4ec 50%, #f8bbd0 100%);
+            min-height: 100vh;
+            color: #4a4a4a;
+            overflow-x: hidden;
+        }
+
+        .butterfly {
+            position: absolute;
+            pointer-events: none;
+            animation: float 12s infinite ease-in-out;
+            opacity: 0.7;
+            z-index: 10;
+        }
+
+        @keyframes float {
+            0% { transform: translate(0, 0) rotate(0deg) scale(0.8); }
+            25% { transform: translate(30px, -50px) rotate(15deg) scale(1); }
+            50% { transform: translate(-20px, -100px) rotate(-10deg) scale(0.9); }
+            75% { transform: translate(40px, -150px) rotate(20deg) scale(1.1); }
+            100% { transform: translate(0, -200px) rotate(0deg) scale(0.8); opacity: 0; }
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.78);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.85);
+            box-shadow: 0 15px 35px rgba(216, 27, 96, 0.12);
+        }
+
+        .tiara-glow {
+            filter: drop-shadow(0px 0px 8px rgba(212, 175, 55, 0.6));
+        }
+
+        .text-gradient {
+            background: linear-gradient(45deg, #c2185b, #e91e63, #d4af37);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .pulse-ring {
+            box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.4);
+            animation: pulse-ring 2s infinite;
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(233, 30, 99, 0.4); }
+            70% { box-shadow: 0 0 0 12px rgba(233, 30, 99, 0); }
+            100% { box-shadow: 0 0 0 0 rgba(233, 30, 99, 0); }
+        }
+    </style>
+</head>
+<body class="relative">
+
+    <div id="butterfly-container" class="fixed inset-0 pointer-events-none overflow-hidden z-0"></div>
+
+    <div class="fixed top-4 right-4 z-50 flex items-center gap-2">
+        <span id="musicStatus" class="hidden md:inline-block text-xs font-semibold bg-white/90 text-pink-700 px-3 py-1.5 rounded-full shadow-sm backdrop-blur-md border border-pink-200">
+            ♫ Vals Instrumental
+        </span>
+        <button id="musicToggle" class="bg-gradient-to-r from-pink-500 to-rose-500 hover:from-pink-600 hover:to-rose-600 text-white p-3 rounded-full shadow-lg backdrop-blur-md transition-all border border-pink-200 flex items-center justify-center w-12 h-12 pulse-ring">
+            <i id="musicIcon" class="fas fa-play text-lg"></i>
+        </button>
+    </div>
+
+    <main class="relative z-10 max-w-2xl mx-auto px-4 py-8 space-y-10">
+
+        <section class="glass-card rounded-3xl p-8 text-center relative overflow-hidden transition-transform duration-500 hover:scale-[1.01]">
+            <div class="absolute -top-12 -left-12 w-32 h-32 bg-pink-300 rounded-full blur-3xl opacity-50"></div>
+            <div class="absolute -bottom-12 -right-12 w-32 h-32 bg-yellow-200 rounded-full blur-3xl opacity-50"></div>
+
+            <div class="mb-4 inline-block transform hover:rotate-6 transition-transform">
+                <svg class="w-16 h-16 text-gold-accent tiara-glow mx-auto" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M5 16L3 5l5.5 5L12 4l3.5 6L21 5l-2 11H5zm14 3c0 .6-.4 1-1 1H6c-.6 0-1-.4-1-1v-1h14v1z"/>
+                    <circle cx="12" cy="2" r="1.5"/>
+                    <circle cx="2" cy="3" r="1.5"/>
+                    <circle cx="22" cy="3" r="1.5"/>
+                </svg>
+            </div>
+
+            <p class="text-xs md:text-sm tracking-widest text-pink-700 font-semibold uppercase mb-2">
+                Con la bendición de Dios y el amor de mi familia<br>te invito a:
+            </p>
+
+            <h2 class="font-cursive text-5xl md:text-6xl text-pink-600 my-2">Mis</h2>
+            <h1 class="font-serif text-6xl md:text-7xl font-bold text-gradient leading-tight my-1">
+                15 Años
+            </h1>
+
+            <div class="my-6">
+                <p class="font-cursive text-6xl md:text-7xl text-pink-700 hover:scale-105 transition-transform duration-300 inline-block">
+                    Nikeila
+                </p>
+            </div>
+
+            <p class="text-sm md:text-base text-gray-600 italic font-serif max-w-md mx-auto">
+                "Quiero que tú también estés presente en este momento tan lindo para mí"
+            </p>
+        </section>
+
+        <section class="glass-card rounded-3xl p-6 text-center">
+            <h3 class="text-xs font-semibold text-pink-700 tracking-wider uppercase mb-4 flex items-center justify-center gap-2">
+                <i class="far fa-clock"></i> Faltan sólo
+            </h3>
+            
+            <div class="grid grid-cols-4 gap-2 md:gap-4 max-w-md mx-auto">
+                <div class="bg-white/80 p-3 rounded-2xl border border-pink-100 shadow-sm">
+                    <span id="days" class="block font-bold text-2xl md:text-3xl text-pink-600">00</span>
+                    <span class="text-[10px] md:text-xs text-gray-500 uppercase font-medium">Días</span>
+                </div>
+                <div class="bg-white/80 p-3 rounded-2xl border border-pink-100 shadow-sm">
+                    <span id="hours" class="block font-bold text-2xl md:text-3xl text-pink-600">00</span>
+                    <span class="text-[10px] md:text-xs text-gray-500 uppercase font-medium">Horas</span>
+                </div>
+                <div class="bg-white/80 p-3 rounded-2xl border border-pink-100 shadow-sm">
+                    <span id="minutes" class="block font-bold text-2xl md:text-3xl text-pink-600">00</span>
+                    <span class="text-[10px] md:text-xs text-gray-500 uppercase font-medium">Min</span>
+                </div>
+                <div class="bg-white/80 p-3 rounded-2xl border border-pink-100 shadow-sm">
+                    <span id="seconds" class="block font-bold text-2xl md:text-3xl text-pink-600">00</span>
+                    <span class="text-[10px] md:text-xs text-gray-500 uppercase font-medium">Seg</span>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-6 text-center">
+            <h3 class="font-serif text-2xl font-bold text-pink-700 mb-4 tracking-wider uppercase">NOVIEMBRE</h3>
+
+            <div class="max-w-xs mx-auto bg-white/60 p-4 rounded-2xl border border-pink-100 shadow-inner">
+                <div class="grid grid-cols-7 gap-1 text-center text-xs font-bold text-pink-800 mb-2">
+                    <div>DOM</div><div>LUN</div><div>MAR</div><div>MIÉ</div><div>JUE</div><div>VIE</div><div>SÁB</div>
+                </div>
+                <div class="grid grid-cols-7 gap-1 text-center text-sm font-medium text-gray-700">
+                    <div class="relative py-1 flex items-center justify-center font-bold text-pink-600">
+                        <span class="w-8 h-8 rounded-full bg-pink-200 border-2 border-pink-500 flex items-center justify-center text-pink-800 shadow-md transform scale-110">
+                            1 ❤️
+                        </span>
+                    </div>
+                    <div class="py-1">2</div><div class="py-1">3</div><div class="py-1">4</div><div class="py-1">5</div><div class="py-1">6</div><div class="py-1">7</div>
+                    <div class="py-1">8</div><div class="py-1">9</div><div class="py-1">10</div><div class="py-1">11</div><div class="py-1">12</div><div class="py-1">13</div><div class="py-1">14</div>
+                    <div class="py-1">15</div><div class="py-1">16</div><div class="py-1">17</div><div class="py-1">18</div><div class="py-1">19</div><div class="py-1">20</div><div class="py-1">21</div>
+                    <div class="py-1">22</div><div class="py-1">23</div><div class="py-1">24</div><div class="py-1">25</div><div class="py-1">26</div><div class="py-1">27</div><div class="py-1">28</div>
+                    <div class="py-1">29</div><div class="py-1">30</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-6 text-center space-y-6">
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="bg-white/80 p-6 rounded-2xl border border-pink-100 flex flex-col items-center justify-center shadow-sm">
+                    <div class="w-12 h-12 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl mb-3">
+                        <i class="fas fa-home"></i>
+                    </div>
+                    <h4 class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Lugar</h4>
+                    <p class="font-serif font-bold text-2xl text-pink-700 my-2">CASA RAQUEL</p>
+                    <p class="text-xs text-gray-500">Dirección de la Celebración</p>
+                </div>
+
+                <div class="bg-white/80 p-6 rounded-2xl border border-pink-100 flex flex-col items-center justify-center shadow-sm">
+                    <div class="w-12 h-12 rounded-full bg-pink-100 text-pink-600 flex items-center justify-center text-xl mb-3">
+                        <i class="far fa-clock"></i>
+                    </div>
+                    <h4 class="text-xs uppercase tracking-widest text-gray-500 font-semibold">Hora</h4>
+                    <p class="font-serif font-bold text-2xl text-pink-700 my-2">5:00 PM</p>
+                    <p class="text-xs text-gray-500">Puntualidad Agradecida</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="glass-card rounded-3xl p-6 text-center">
+            <div class="w-12 h-12 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center text-xl mx-auto mb-2">
+                <i class="fas fa-user-tie"></i>
+            </div>
+            <h4 class="font-bold text-pink-700 text-base">Código de Vestimenta</h4>
+            <p class="text-sm font-medium text-gray-700 mt-1">Formal / Elegante</p>
+            <p class="text-xs text-gray-500 mt-1">¡Acompáñanos vistiendo tu mejor gala para esta noche especial!</p>
+        </section>
+
+        <section class="glass-card rounded-3xl p-6 md:p-8 text-center">
+            <div class="w-14 h-14 rounded-full bg-emerald-500 text-white flex items-center justify-center text-2xl mx-auto mb-4 shadow-lg">
+                <i class="fab fa-whatsapp"></i>
+            </div>
+            <h3 class="font-serif text-2xl font-bold text-pink-700">Confirmar Asistencia</h3>
+            <p class="text-xs text-gray-600 mb-6 mt-1">Por favor confirma tu presencia para esperarte con mucho cariño.</p>
+
+            <form id="rsvpForm" class="space-y-4 max-w-md mx-auto text-left">
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Nombre Completo *</label>
+                    <input type="text" id="guestName" required placeholder="Ej. Juan Pérez / Familia Pérez" class="w-full px-4 py-3 rounded-xl border border-pink-200 focus:ring-2 focus:ring-pink-400 focus:outline-none bg-white/80 text-sm">
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">¿Asistirás al evento?</label>
+                    <select id="attendance" class="w-full px-4 py-3 rounded-xl border border-pink-200 focus:ring-2 focus:ring-pink-400 focus:outline-none bg-white/80 text-sm">
+                        <option value="¡Sí, con mucho gusto asistiré!">¡Sí, con mucho gusto asistiré!</option>
+                        <option value="Lamentablemente no podré asistir">Lamentablemente no podré asistir</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Número de Acompañantes</label>
+                    <select id="guestCount" class="w-full px-4 py-3 rounded-xl border border-pink-200 focus:ring-2 focus:ring-pink-400 focus:outline-none bg-white/80 text-sm">
+                        <option value="1 persona (Solo yo)">Solo yo (1 persona)</option>
+                        <option value="2 personas">2 Personas</option>
+                        <option value="3 personas">3 Personas</option>
+                        <option value="Familia (4+ personas)">Familia (4+ personas)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-semibold text-gray-700 uppercase mb-1">Mensaje para Nikeila (Opcional)</label>
+                    <textarea id="guestMessage" rows="2" placeholder="¡Muchas felicidades en tus 15 años!" class="w-full px-4 py-3 rounded-xl border border-pink-200 focus:ring-2 focus:ring-pink-400 focus:outline-none bg-white/80 text-sm"></textarea>
+                </div>
+
+                <button type="submit" class="w-full bg-gradient-to-r from-emerald-500 to-teal-600 hover:from-emerald-600 hover:to-teal-700 text-white font-bold py-3.5 px-6 rounded-xl shadow-lg hover:shadow-xl transition-all transform active:scale-95 flex items-center justify-center gap-2 text-sm">
+                    <i class="fab fa-whatsapp text-xl"></i> Enviar Confirmación por WhatsApp
+                </button>
+            </form>
+        </section>
+
+        <footer class="text-center py-6">
+            <h2 class="font-cursive text-5xl text-pink-600 mb-2">¡Te Espero!</h2>
+            <p class="text-xs text-pink-800/60 font-medium">Con la bendición de Dios • Mis 15 Años</p>
+        </footer>
+
+    </main>
+
+    <audio id="bgMusic" loop>
+        <source src="https://cdn.pixabay.com/download/audio/2021/08/09/audio_884b2591fa.mp3?filename=waltz-of-flowers-piano-solo-11110.mp3" type="audio/mpeg">
+    </audio>
+
+    <script>
+        const container = document.getElementById('butterfly-container');
+        const butterflyCount = 8;
+
+        for (let i = 0; i < butterflyCount; i++) {
+            const butterfly = document.createElement('div');
+            butterfly.className = 'butterfly';
+            butterfly.style.left = `${Math.random() * 90}%`;
+            butterfly.style.top = `${Math.random() * 80 + 10}%`;
+            butterfly.style.animationDelay = `${Math.random() * 8}s`;
+            butterfly.style.animationDuration = `${10 + Math.random() * 6}s`;
+            
+            butterfly.innerHTML = `
+                <svg width="32" height="32" viewBox="0 0 24 24" fill="#E91E63" opacity="0.6">
+                    <path d="M12,2 C13,4 16,3 18,5 C20,7 21,10 19,12 C17,14 14,13 12,15 C10,13 7,14 5,12 C3,10 4,7 6,5 C8,3 11,4 12,2 Z"/>
+                </svg>
+            `;
+            container.appendChild(butterfly);
+        }
+
+        function updateCountdown() {
+            const now = new Date();
+            const currentYear = now.getFullYear();
+            let targetDate = new Date(`November 1, ${currentYear} 17:00:00`);
+
+            if (now > targetDate) {
+                targetDate = new Date(`November 1, ${currentYear + 1} 17:00:00`);
+            }
+
+            const diff = targetDate - now;
+
+            const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((diff % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+
+            document.getElementById('days').innerText = String(days).padStart(2, '0');
+            document.getElementById('hours').innerText = String(hours).padStart(2, '0');
+            document.getElementById('minutes').innerText = String(minutes).padStart(2, '0');
+            document.getElementById('seconds').innerText = String(seconds).padStart(2, '0');
+        }
+
+        setInterval(updateCountdown, 1000);
+        updateCountdown();
+
+        const bgMusic = document.getElementById('bgMusic');
+        const musicToggle = document.getElementById('musicToggle');
+        const musicIcon = document.getElementById('musicIcon');
+        let isPlaying = false;
+
+        musicToggle.addEventListener('click', () => {
+            if (isPlaying) {
+                bgMusic.pause();
+                musicIcon.className = 'fas fa-play text-lg';
+                musicToggle.classList.remove('pulse-ring');
+            } else {
+                bgMusic.play().then(() => {
+                    musicIcon.className = 'fas fa-pause text-lg';
+                    musicToggle.classList.add('pulse-ring');
+                }).catch(e => console.log("Audio play blocked by browser policy:", e));
+            }
+            isPlaying = !isPlaying;
+        });
+
+        document.getElementById('rsvpForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const name = document.getElementById('guestName').value;
+            const attendance = document.getElementById('attendance').value;
+            const count = document.getElementById('guestCount').value;
+            const message = document.getElementById('guestMessage').value;
+
+            confetti({
+                particleCount: 120,
+                spread: 70,
+                origin: { y: 0.6 },
+                colors: ['#FFD1DC', '#D81B60', '#D4AF37', '#ffffff']
+            });
+
+            const phoneNumber = "50767915334";
+            let text = `¡Hola! ✨ Confirmación de asistencia para los 15 Años de *Nikeila*:%0A%0A`;
+            text += `👤 *Nombre:* ${encodeURIComponent(name)}%0A`;
+            text += `📌 *Asistencia:* ${encodeURIComponent(attendance)}%0A`;
+            text += `👥 *Acompañantes:* ${encodeURIComponent(count)}%0A`;
+            if (message) {
+                text += `💬 *Mensaje:* ${encodeURIComponent(message)}%0A`;
+            }
+            text += `%0A¡Muchas gracias por la invitación! 🎉`;
+
+            const whatsappUrl = `https://api.whatsapp.com/send?phone=${phoneNumber}&text=${text}`;
+
+            setTimeout(() => {
+                window.open(whatsappUrl, '_blank');
+            }, 800);
+        });
+    </script>
+</body>
+</html>
